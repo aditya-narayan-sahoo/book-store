@@ -20,7 +20,6 @@ const cartSlice = createSlice({
           text: "You can view your cart anytime.",
           showConfirmButton: false,
           timer: 2000,
-          backdrop: true,
           toast: true,
           customClass: {
             title: "swal-title",
@@ -37,7 +36,6 @@ const cartSlice = createSlice({
           text: "This product is already in your cart.",
           showConfirmButton: false,
           timer: 3000,
-          backdrop: false,
         });
       }
     },
