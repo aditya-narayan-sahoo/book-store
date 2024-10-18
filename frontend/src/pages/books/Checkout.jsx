@@ -2,11 +2,12 @@ import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 
 const CheckOut = () => {
   const cartItems = useSelector((store) => store.cart.cartItems);
   const totalPrice = cartItems.reduce((a, b) => a + b.newPrice, 0).toFixed(2);
-  const currentUser = true; //to add authentication later
+  const { currentUser } = useAuth();
   const {
     register,
     handleSubmit,
