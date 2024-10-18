@@ -7,10 +7,11 @@ const {
   updateBook,
   deleteABook,
 } = require("./book.controller");
+const verifyAdminToken = require("../middleware/verifyAdminToken");
 const router = express.Router();
 
 //post a book
-router.post("/create-book", postABook);
+router.post("/create-book", verifyAdminToken, postABook);
 
 //get all books
 router.get("/", getAllBooks);
@@ -19,9 +20,9 @@ router.get("/", getAllBooks);
 router.get("/:id", getSingleBook);
 
 //update book
-router.put("/edit/:id", updateBook);
+router.put("/edit/:id", verifyAdminToken, updateBook);
 
 //delete book
-router.delete("/:id", deleteABook);
+router.delete("/:id", verifyAdminToken, deleteABook);
 
 module.exports = router;
