@@ -9,6 +9,8 @@ import SingleBook from "../pages/books/SingleBook";
 import PrivateRoute from "./PrivateRoute";
 import Order from "../pages/books/Order";
 
+import AdminRoute from "./AdminRoute";
+import AdminLogin from "../components/AdminLogin";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +35,52 @@ const router = createBrowserRouter([
           <PrivateRoute>
             <Order />
           </PrivateRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/admin",
+    element: <AdminLogin />,
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <AdminRoute>
+        <div>Admin Dashboard</div>
+      </AdminRoute>
+    ),
+    children: [
+      {
+        path: "",
+        element: (
+          <AdminRoute>
+            <div>DashBoard Home</div>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "add-new-book",
+        element: (
+          <AdminRoute>
+            <div>Add New Book</div>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "edit-book/:id",
+        element: (
+          <AdminRoute>
+            <div>Edit Book</div>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "manage-book",
+        element: (
+          <AdminRoute>
+            <div>Manage Book</div>
+          </AdminRoute>
         ),
       },
     ],
