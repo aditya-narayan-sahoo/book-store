@@ -11,6 +11,9 @@ import Order from "../pages/books/Order";
 
 import AdminRoute from "./AdminRoute";
 import AdminLogin from "../components/AdminLogin";
+import DashboardLayout from "../pages/dashboard/DashboardLayout";
+import Dashboard from "../pages/dashboard/Dashboard";
+import ManageBooks from "../pages/dashboard/manageBooks/manageBooks";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -47,7 +50,7 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <AdminRoute>
-        <div>Admin Dashboard</div>
+        <DashboardLayout />
       </AdminRoute>
     ),
     children: [
@@ -55,7 +58,7 @@ const router = createBrowserRouter([
         path: "",
         element: (
           <AdminRoute>
-            <div>DashBoard Home</div>
+            <Dashboard />
           </AdminRoute>
         ),
       },
@@ -79,7 +82,7 @@ const router = createBrowserRouter([
         path: "manage-book",
         element: (
           <AdminRoute>
-            <div>Manage Book</div>
+            <ManageBooks />
           </AdminRoute>
         ),
       },
