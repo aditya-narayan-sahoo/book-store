@@ -1,11 +1,10 @@
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   useDeleteBookMutation,
   useFetchAllBooksQuery,
 } from "../../../redux/features/books/booksApi";
 
 const ManageBooks = () => {
-  const navigate = useNavigate();
   const { data: books, refetch } = useFetchAllBooksQuery();
   const [deleteBook] = useDeleteBookMutation();
 
@@ -19,11 +18,6 @@ const ManageBooks = () => {
       console.error("Failed to delete book:", error.message);
       alert("Failed to delete book. Please try again.");
     }
-  };
-
-  // Handle navigating to Edit Book page
-  const handleEditClick = (id) => {
-    navigate(`dashboard/edit-book/${id}`);
   };
   return (
     <section className="py-1 bg-blueGray-50">
@@ -87,7 +81,7 @@ const ManageBooks = () => {
                       </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 space-x-4">
                         <Link
-                          to={handleEditClick(book._id)}
+                          to={`/dashboard/edit-book/${book._id}`}
                           className="font-medium text-indigo-600 hover:text-indigo-700 mr-2 hover:underline underline-offset-2"
                         >
                           Edit

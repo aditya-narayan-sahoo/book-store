@@ -7,12 +7,7 @@ import { useAuth } from "../context/AuthContext";
 const Register = () => {
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const { registerUser, signInWithGoogle } = useAuth();
   //register user using firebase
@@ -21,6 +16,7 @@ const Register = () => {
     try {
       await registerUser(data.email, data.password);
       alert("User registered successfully!");
+      navigate("/");
     } catch {
       setMessage("Please use valid email and password");
     }
